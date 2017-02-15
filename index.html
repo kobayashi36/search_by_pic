@@ -1,0 +1,132 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>PicTube</title>
+</head>
+
+<script type="text/javascript">
+        window.onload = function onLoad() {
+            param = GetQueryString();
+
+		  for(var i=0; i<5; i++){
+			var thumbnail = document.getElementById("thumbnail"+i);
+			thumbnail.innerHTML = "<img src ='"+param['thumbnail'+i]+"'>";
+			var title = document.getElementById("title"+i);
+			//title0.innerHTML = "<hr>"+"<a href='https://www.youtube.com/watch?v='"+param["id0"]+" target='_blank'>"+param["title0"]+"</a>";
+			title.innerHTML = "<a href='https://www.youtube.com/watch?v="+param["id"+i]+"'    target='_blank'>"+param["title"+i]+"</a>";
+
+			var description = document.getElementById("description"+i);
+			description.innerHTML = param["description"+i];
+		}
+
+        }
+
+        function GetQueryString() {
+            if (1 < document.location.search.length) {
+                // 最初㝮1文字 (?記坷) を除㝄㝟文字列を坖得㝙る
+                var query = document.location.search.substring(1);
+
+                // クエリ㝮区切り記坷 (&) 㝧文字列を酝列㝫分割㝙る
+                var parameters = query.split('&');
+
+                var result = new Object();
+                for (var i = 0; i < parameters.length; i++) {
+                    // パラメータ坝㝨パラメータ値㝫分割㝙る
+                    var element = parameters[i].split('=');
+
+                    var paramName = decodeURIComponent(element[0]);
+                    var paramValue = decodeURIComponent(element[1]);
+                    // パラメータ坝をキー㝨㝗㝦連想酝列㝫追加㝙る
+                    result[paramName] = decodeURIComponent(paramValue);
+                }
+				var table = document.getElementById('table');
+				table.border = 5;
+                return result;
+            }
+            return null;
+        }
+    </script>
+</head>
+
+
+<body>
+	<h2 style="background-color:#FF0000; color:#FFFFFF;"><center>PicTube</center></h2>
+	<form action="search.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="upfile" size="30" id="upfile" /><br />
+		<br />
+		<input type="submit" value="search" />
+	</form>
+
+	<table border='0' cellpadding="1" id="table" >
+		<!--0-->
+		<tr>
+    		<td rowspan="3" id="thumbnail0"></td>
+			<td id="title0"></td>
+    	</tr>
+
+		<tr>
+			<td rowspan="1" id="description0">
+			</td>
+		</tr>
+		<tr>
+
+		</tr>
+
+
+		<!--1-->
+		<tr>
+			<td rowspan="3" id="thumbnail1"></td>
+			<td id="title1"></td>
+		</tr>
+
+		<tr>
+			<td rowspan="2" id="description1">
+			</td>
+		</tr>
+		<tr>
+
+		</tr>
+
+		<!--2-->
+		<tr>
+			<td rowspan="3" id="thumbnail2"></td>
+			<td id="title2"></td>
+		</tr>
+		<tr>
+			<td rowspan="2" id="description2">
+			</td>
+		</tr>
+		<tr>
+
+		</tr>
+
+		<!--3-->
+		<tr>
+			<td rowspan="3" id="thumbnail3"></td>
+			<td id="title3"></td>
+		</tr>
+		<tr>
+			<td rowspan="2" id="description3">
+			</td>
+		</tr>
+		<tr>
+
+		</tr>
+
+		<!--4-->
+		<tr>
+			<td rowspan="3" id="thumbnail4"></td>
+			<td id="title4"></td>
+		</tr>
+		<tr>
+			<td rowspan="2" id="description4">
+			</td>
+		</tr>
+		<tr>
+
+		</tr>
+	</table>
+</body>
+
+</html>
